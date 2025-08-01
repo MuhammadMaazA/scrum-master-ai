@@ -310,7 +310,7 @@ Could you be more specific about what aspect you'd like help with? For example:
                     >
                       <Box display="flex" alignItems="center" gap={1} mb={1}>
                         {message.type === 'ai' && <AIIcon fontSize="small" />}
-                        <Typography variant="caption" color="inherit" opacity={0.8}>
+                        <Typography variant="caption" color="inherit" sx={{ opacity: 0.8 }}>
                           {message.type === 'user' ? 'You' : 'AI Assistant'}
                         </Typography>
                         {message.category && (
