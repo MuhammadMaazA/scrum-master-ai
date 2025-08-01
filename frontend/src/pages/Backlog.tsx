@@ -465,9 +465,9 @@ const Backlog: React.FC = () => {
                               )}
                               {item.ai_complexity_score && (
                                 <Chip
-                                  label={item.estimated_complexity || 'M'}
+                                  label={item.effort_estimate || 'M'}
                                   size="small"
-                                  color={getComplexityColor(item.estimated_complexity || 'M')}
+                                  color={getComplexityColor(item.effort_estimate || 'M')}
                                   variant="outlined"
                                   title="AI Complexity"
                                 />

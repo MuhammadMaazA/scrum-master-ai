@@ -332,12 +332,10 @@ Could you be more specific about what aspect you'd like help with? For example:
                       >
                         {message.content}
                       </Typography>
-                      <Typography 
-                        variant="caption" 
-                        color="inherit" 
-                        opacity={0.6}
-                        display="block"
-                        mt={1}
+                                            <Typography
+                        variant="caption"
+                        color="inherit"
+                        sx={{ opacity: 0.6, display: 'block', mt: 1 }}
                       >
                         {message.timestamp.toLocaleTimeString()}
                       </Typography>
