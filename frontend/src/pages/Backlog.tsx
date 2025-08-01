@@ -654,7 +654,7 @@ const Backlog: React.FC = () => {
                 <Chip 
                   label={selectedAnalysis.estimated_complexity}
                   color={getComplexityColor(selectedAnalysis.estimated_complexity)}
-                  size="large"
+                  size="medium"
                 />
               </Box>
 
