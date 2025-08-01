@@ -46,8 +46,8 @@ import {
   Remove as RemoveIcon,
 } from '@mui/icons-material';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
-import { teamsAPI, sprintsAPI, backlogAPI, sprintPlanningAPI } from '@/services/api';
-import { Team, Sprint, BacklogItem, SprintForm, SprintPlanSuggestion } from '@/types';
+import { teamsAPI, sprintsAPI, backlogAPI, sprintPlanningAPI } from '../services/api';
+import { Team, Sprint, BacklogItem, SprintForm, SprintPlanSuggestion } from '../types';
 
 const SprintPlanning: React.FC = () => {
   const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);

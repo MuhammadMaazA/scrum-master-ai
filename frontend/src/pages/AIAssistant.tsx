@@ -26,7 +26,7 @@ import {
   Clear as ClearIcon,
 } from '@mui/icons-material';
 import { useQuery, useMutation } from 'react-query';
-import { aiAPI } from '@/services/api';
+import { aiAPI } from '../services/api';
 
 interface ChatMessage {
   id: string;

@@ -37,7 +37,7 @@ import {
 import {
   Add as AddIcon,
   SmartToy as AIIcon,
-  Analysis as AnalysisIcon,
+  Analytics as AnalysisIcon,
   AutoFixHigh as AutoFixIcon,
   ExpandMore as ExpandMoreIcon,
   Refresh as RefreshIcon,
@@ -49,8 +49,8 @@ import {
   ContentCopy as DuplicateIcon,
 } from '@mui/icons-material';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
-import { projectsAPI, backlogAPI } from '@/services/api';
-import { BacklogItem, BacklogItemForm, BacklogAnalysis, Project, BacklogFilters } from '@/types';
+import { projectsAPI, backlogAPI } from '../services/api';
+import { BacklogItem, BacklogItemForm, BacklogAnalysis, Project, BacklogFilters } from '../types';
 
 const Backlog: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);

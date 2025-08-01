@@ -24,8 +24,8 @@ import {
   SmartToy,
 } from '@mui/icons-material';
 import { useQuery } from 'react-query';
-import { teamsAPI, sprintsAPI, standupAPI, aiAPI } from '@/services/api';
-import { Team, Sprint, StandupSummary } from '@/types';
+import { teamsAPI, sprintsAPI, standupAPI, aiAPI } from '../services/api';
+import { Team, Sprint, StandupSummary } from '../types';
 
 const Dashboard: React.FC = () => {
   const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);

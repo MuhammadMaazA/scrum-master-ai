@@ -4,12 +4,12 @@ import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
-import Layout from '@/components/Layout/Layout';
-import Dashboard from '@/pages/Dashboard';
-import Standups from '@/pages/Standups';
-import Backlog from '@/pages/Backlog';
-import SprintPlanning from '@/pages/SprintPlanning';
-import AIAssistant from '@/pages/AIAssistant';
+import Layout from './components/Layout/Layout';
+import Dashboard from './pages/Dashboard';
+import Standups from './pages/Standups';
+import Backlog from './pages/Backlog';
+import SprintPlanning from './pages/SprintPlanning';
+import AIAssistant from './pages/AIAssistant';
 
 // Create React Query client
 const queryClient = new QueryClient({

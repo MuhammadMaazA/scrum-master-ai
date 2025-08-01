@@ -34,8 +34,8 @@ import {
   Group,
 } from '@mui/icons-material';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
-import { teamsAPI, standupAPI } from '@/services/api';
-import { StandupSummary, StandupEntryForm, Team } from '@/types';
+import { teamsAPI, standupAPI } from '../services/api';
+import { StandupSummary, StandupEntryForm, Team } from '../types';
 
 const Standups: React.FC = () => {
   const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
