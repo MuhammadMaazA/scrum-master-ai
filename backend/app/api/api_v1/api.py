@@ -3,7 +3,7 @@ Main API router that includes all endpoint routers.
 """
 from fastapi import APIRouter
 
-from app.api.api_v1.endpoints import auth, teams, projects, sprints, standup, backlog, ai, analytics, jira_sync, agents, security
+from app.api.api_v1.endpoints import auth, teams, projects, sprints, standup, backlog, ai, analytics, jira_sync, agents, security, monitoring
 
 api_router = APIRouter()
 
