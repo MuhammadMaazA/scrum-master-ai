@@ -34,7 +34,9 @@ python-jose[cryptography]==3.3.0
 cryptography==41.0.7
 python-multipart==0.0.6
 passlib[bcrypt]==1.7.4
-python-multipart==0.0.6
+
+# System Monitoring
+psutil==5.9.6
 
 # Configuration & Environment
 pydantic==2.5.0

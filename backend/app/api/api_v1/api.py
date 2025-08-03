@@ -19,3 +19,4 @@ api_router.include_router(analytics.router, prefix="/analytics", tags=["analytic
 api_router.include_router(jira_sync.router, prefix="/jira", tags=["jira-sync"])
 api_router.include_router(agents.router, prefix="/agents", tags=["ai-agents"])
 api_router.include_router(security.router, prefix="/security", tags=["security"])
+api_router.include_router(monitoring.router, prefix="/monitoring", tags=["monitoring"])
