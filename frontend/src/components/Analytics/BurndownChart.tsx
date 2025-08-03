@@ -229,8 +229,8 @@ const BurndownChart: React.FC<BurndownChartProps> = ({
                   />
                   <YAxis tick={{ fontSize: 12 }} />
                   <Tooltip 
-                    labelFormatter={(label) => `Date: ${label}`}
-                    formatter={(value, name) => [
+                    labelFormatter={(label: any) => `Date: ${label}`}
+                    formatter={(value: any, name: any) => [
                       `${value} points`,
                       name === 'remaining' ? 'Remaining Work' : 'Ideal Burndown'
                     ]}
