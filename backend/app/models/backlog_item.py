@@ -114,6 +114,28 @@ class BacklogItem(Base):
         if self.business_value is None:
             return False
         return self.business_value >= 80
+    
+    @property
+    def effort_estimate_numeric(self) -> int:
+        """Convert effort estimate to numeric story points."""
+        if self.story_points is not None:
+            return self.story_points
+        
+        # Convert t-shirt sizing to numeric values
+        effort_mapping = {
+            'XS': 1,
+            'S': 2,
+            'M': 3,
+            'L': 5,
+            'XL': 8,
+            'XXL': 13
+        }
+        
+        if self.effort_estimate and self.effort_estimate.upper() in effort_mapping:
+            return effort_mapping[self.effort_estimate.upper()]
+        
+        # Default to 3 if no estimate available
+        return 3
 
     def calculate_value_effort_ratio(self) -> Optional[float]:
         """Calculate and update the value-effort ratio for prioritization."""
