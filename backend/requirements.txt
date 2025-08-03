@@ -9,13 +9,16 @@ alembic==1.12.1
 asyncpg==0.29.0
 psycopg2-binary==2.9.9
 
-# AI & LLM - Simplified for now
+# AI & LLM - Full Implementation
 openai==1.30.0
 tiktoken==0.7.0
+langchain==0.1.20
+langchain-openai==0.1.8
+langchain-community==0.0.38
 
-# Vector Database - Simplified
-# chromadb==0.4.18
-# sentence-transformers==2.2.2
+# Vector Database - RAG Implementation
+chromadb==0.4.24
+sentence-transformers==2.2.2
 
 # External Integrations
 atlassian-python-api==3.41.10
