@@ -278,6 +278,136 @@ export const aiAPI = {
   },
 };
 
+// Analytics API
+export const analyticsAPI = {
+  getBurndownChart: async (sprintId: number): Promise<any> => {
+    const response = await api.get(`/analytics/burndown/${sprintId}`);
+    return response.data;
+  },
+
+  getVelocityChart: async (teamId: number, numSprints?: number): Promise<any> => {
+    const params = numSprints ? `?num_sprints=${numSprints}` : '';
+    const response = await api.get(`/analytics/velocity/${teamId}${params}`);
+    return response.data;
+  },
+
+  getSprintMetrics: async (sprintId: number): Promise<any> => {
+    const response = await api.get(`/analytics/sprint-metrics/${sprintId}`);
+    return response.data;
+  },
+
+  getSprintReport: async (sprintId: number): Promise<any> => {
+    const response = await api.get(`/analytics/sprint-report/${sprintId}`);
+    return response.data;
+  },
+
+  getDashboardMetrics: async (teamId: number): Promise<any> => {
+    const response = await api.get(`/analytics/dashboard-metrics/${teamId}`);
+    return response.data;
+  },
+
+  getVelocityHistory: async (teamId: number, numSprints?: number): Promise<any> => {
+    const params = numSprints ? `?num_sprints=${numSprints}` : '';
+    const response = await api.get(`/analytics/team-velocity-history/${teamId}${params}`);
+    return response.data;
+  },
+};
+
+// AI Agents API
+export const agentsAPI = {
+  chat: async (request: string, context?: any): Promise<any> => {
+    const response = await api.post('/agents/chat', { request, context });
+    return response.data;
+  },
+
+  executeStandupWorkflow: async (parameters?: any): Promise<any> => {
+    const response = await api.post('/agents/workflow/standup', { 
+      workflow_type: 'standup', 
+      parameters 
+    });
+    return response.data;
+  },
+
+  executeSprintHealthCheck: async (sprintId: number): Promise<any> => {
+    const response = await api.post('/agents/workflow/sprint-health', {
+      workflow_type: 'sprint_health',
+      parameters: { sprint_id: sprintId }
+    });
+    return response.data;
+  },
+
+  createIntelligentTicket: async (ticketRequest: string, projectContext?: any): Promise<any> => {
+    const response = await api.post('/agents/workflow/create-ticket', {
+      workflow_type: 'create_ticket',
+      parameters: { ticket_request: ticketRequest, project_context: projectContext }
+    });
+    return response.data;
+  },
+
+  triggerAutoStandup: async (channel: string = '#standup'): Promise<any> => {
+    const response = await api.post(`/agents/auto-standup?channel=${encodeURIComponent(channel)}`);
+    return response.data;
+  },
+
+  getCapabilities: async (): Promise<any> => {
+    const response = await api.get('/agents/capabilities');
+    return response.data;
+  },
+
+  testTools: async (): Promise<any> => {
+    const response = await api.post('/agents/test-tools');
+    return response.data;
+  },
+};
+
+// Jira Integration API
+export const jiraAPI = {
+  syncBacklog: async (projectKey: string): Promise<any> => {
+    const response = await api.post(`/jira/sync/backlog/${projectKey}`);
+    return response.data;
+  },
+
+  syncSprints: async (projectKey: string): Promise<any> => {
+    const response = await api.post(`/jira/sync/sprints/${projectKey}`);
+    return response.data;
+  },
+
+  autoSync: async (projectKey: string): Promise<any> => {
+    const response = await api.post(`/jira/sync/auto/${projectKey}`);
+    return response.data;
+  },
+
+  syncNow: async (projectKey: string): Promise<any> => {
+    const response = await api.post(`/jira/sync/now/${projectKey}`);
+    return response.data;
+  },
+
+  createTicket: async (ticketData: any): Promise<any> => {
+    const response = await api.post('/jira/create-ticket', ticketData);
+    return response.data;
+  },
+
+  updateTicketStatus: async (ticketKey: string, status: string): Promise<any> => {
+    const response = await api.put(`/jira/update-ticket-status/${ticketKey}`, { status });
+    return response.data;
+  },
+
+  getProjects: async (): Promise<any> => {
+    const response = await api.get('/jira/projects');
+    return response.data;
+  },
+
+  testConnection: async (): Promise<any> => {
+    const response = await api.get('/jira/connection-test');
+    return response.data;
+  },
+
+  getSyncStatus: async (projectKey: string): Promise<any> => {
+    const response = await api.get(`/jira/sync-status/${projectKey}`);
+    return response.data;
+  },
+};
+
 // Utility functions
 export const apiUtils = {
   handleApiError: (error: any): string => {
