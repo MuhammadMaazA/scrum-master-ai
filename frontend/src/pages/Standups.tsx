@@ -217,7 +217,7 @@ const Standups: React.FC = () => {
                     startIcon={<SendIcon />}
                     onClick={handleSendReminder}
                     disabled={!slackChannelId || sendReminderMutation.isLoading}
-{/* loading={sendReminderMutation.isLoading} */}
+// loading={sendReminderMutation.isLoading}
                   >
                     Send Reminder
                   </Button>
