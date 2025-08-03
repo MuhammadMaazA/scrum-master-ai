@@ -87,4 +87,5 @@ data/chromadb/
 htmlcov/
 .coverage
 .coverage.*
-coverage.xml
+coverage.xml.env.tmp
+*.env.tmp
