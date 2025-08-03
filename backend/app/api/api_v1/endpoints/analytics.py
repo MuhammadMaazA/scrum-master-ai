@@ -7,7 +7,8 @@ from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.services.analytics_service import analytics_service
-from app.models.database import Sprint, Team
+from app.models.sprint import Sprint
+from app.models.team import Team
 
 router = APIRouter()
 

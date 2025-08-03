@@ -12,7 +12,11 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func, and_, or_
 
 from app.database import get_db
-from app.models.database import Sprint, BacklogItem, StandupUpdate, Team, Project
+from app.models.sprint import Sprint
+from app.models.backlog_item import BacklogItem
+from app.models.standup import StandupUpdate
+from app.models.team import Team
+from app.models.project import Project
 from app.services.jira_service import jira_service
 
 logger = logging.getLogger(__name__)
