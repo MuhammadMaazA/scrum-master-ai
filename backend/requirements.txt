@@ -57,3 +57,7 @@ flake8==6.1.0
 
 # Monitoring & Logging
 structlog==23.2.0
+slack-sdk
+atlassian-python-api
+redis
+celery

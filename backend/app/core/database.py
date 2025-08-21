@@ -15,10 +15,9 @@ logger = logging.getLogger(__name__)
 # SQLAlchemy engine
 engine = create_engine(
     settings.DATABASE_URL,
+    connect_args={"check_same_thread": False} if "sqlite" in settings.DATABASE_URL else {},
+    poolclass=StaticPool if "sqlite" in settings.DATABASE_URL else None,
     pool_pre_ping=True,
-    pool_recycle=300,
-    pool_size=10,
-    max_overflow=20,
 )
 
 # Session factory

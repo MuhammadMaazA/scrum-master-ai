@@ -5,7 +5,7 @@ from typing import List, Dict, Any
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
-from app.database import get_db
+from app.core.database import get_db
 from app.services.analytics_service import analytics_service
 from app.models.sprint import Sprint
 from app.models.team import Team

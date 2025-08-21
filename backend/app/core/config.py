@@ -34,8 +34,8 @@ class Settings(BaseSettings):
             return v
         return ["http://localhost:3000"]
 
-    # Database
-    DATABASE_URL: str = "postgresql://scrum_user:scrum_password@localhost:5432/scrum_db"
+    # Database (using SQLite for development)
+    DATABASE_URL: str = "sqlite:///./scrum_db.sqlite"
     
     # Redis for caching and task queue
     REDIS_URL: str = "redis://localhost:6379"

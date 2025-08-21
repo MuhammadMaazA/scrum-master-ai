@@ -8,7 +8,7 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
-from app.database import get_db
+from app.core.database import get_db
 from app.core.security import (
     create_access_token, verify_password, get_password_hash,
     verify_token, SecurityAudit, rate_limiter, check_password_strength,

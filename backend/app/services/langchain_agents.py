@@ -12,7 +12,7 @@ from langchain.agents import Tool, AgentExecutor, create_openai_tools_agent
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 from langchain.tools import BaseTool
 from langchain.callbacks.manager import CallbackManagerForToolRun
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.memory import ConversationBufferMemory
 from pydantic import BaseModel, Field
@@ -28,8 +28,8 @@ logger = logging.getLogger(__name__)
 class SlackTool(BaseTool):
     """Tool for interacting with Slack."""
     
-    name = "slack_messenger"
-    description = "Send messages or collect information from Slack channels. Use this to post standup summaries, send reminders, or gather team updates."
+    name: str = "slack_messenger"
+    description: str = "Send messages or collect information from Slack channels. Use this to post standup summaries, send reminders, or gather team updates."
     
     def _run(
         self, 

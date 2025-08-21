@@ -1,0 +1,17 @@
+project_id = "kaemruhmrbhgmdwbogux"
+
+[functions.slack-check]
+verify_jwt = false
+
+[functions.jira-check]
+verify_jwt = false
+
+[functions.ai-check]
+verify_jwt = false
+
+[functions.slack-post]
+verify_jwt = false
+
+[functions.jira-create-issue]
+verify_jwt = false
+

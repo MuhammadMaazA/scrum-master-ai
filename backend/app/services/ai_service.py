@@ -8,12 +8,12 @@ import logging
 from typing import Dict, List, Any, Optional, Tuple
 from datetime import datetime, timedelta
 
-from langchain.llms import OpenAI
-from langchain.chat_models import ChatOpenAI
-from langchain.schema import HumanMessage, SystemMessage, AIMessage
-from langchain.prompts import ChatPromptTemplate, PromptTemplate
+from langchain_openai import OpenAI, ChatOpenAI
+from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
+from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 from langchain.chains import LLMChain
-from langchain.output_parsers import PydanticOutputParser, OutputFixingParser
+from langchain_core.output_parsers import PydanticOutputParser
+from langchain.output_parsers import OutputFixingParser
 from pydantic import BaseModel, Field
 
 from app.core.config import settings
@@ -53,12 +53,17 @@ class AIService:
     """
     
     def __init__(self):
-        self.chat_model = ChatOpenAI(
-            model=settings.OPENAI_MODEL,
-            temperature=settings.AI_TEMPERATURE,
-            max_tokens=settings.OPENAI_MAX_TOKENS,
-            openai_api_key=settings.OPENAI_API_KEY
-        )
+        # Only initialize OpenAI if API key is provided
+        if settings.OPENAI_API_KEY:
+            self.chat_model = ChatOpenAI(
+                model=settings.OPENAI_MODEL,
+                temperature=settings.OPENAI_TEMPERATURE,
+                max_tokens=settings.OPENAI_MAX_TOKENS,
+                openai_api_key=settings.OPENAI_API_KEY
+            )
+        else:
+            self.chat_model = None
+            logger.warning("OpenAI API key not provided. AI features will be disabled.")
         
         self.vector_service = VectorService()
         
@@ -67,16 +72,17 @@ class AIService:
         self.backlog_parser = PydanticOutputParser(pydantic_object=BacklogAnalysis)
         self.sprint_parser = PydanticOutputParser(pydantic_object=SprintPlanSuggestion)
         
-        # Add fixing parsers to handle malformed outputs
-        self.standup_parser = OutputFixingParser.from_llm(
-            parser=self.standup_parser, llm=self.chat_model
-        )
-        self.backlog_parser = OutputFixingParser.from_llm(
-            parser=self.backlog_parser, llm=self.chat_model
-        )
-        self.sprint_parser = OutputFixingParser.from_llm(
-            parser=self.sprint_parser, llm=self.chat_model
-        )
+        # Add fixing parsers to handle malformed outputs (only if chat model is available)
+        if self.chat_model:
+            self.standup_parser = OutputFixingParser.from_llm(
+                parser=self.standup_parser, llm=self.chat_model
+            )
+            self.backlog_parser = OutputFixingParser.from_llm(
+                parser=self.backlog_parser, llm=self.chat_model
+            )
+            self.sprint_parser = OutputFixingParser.from_llm(
+                parser=self.sprint_parser, llm=self.chat_model
+            )
 
     async def generate_standup_summary(
         self, 

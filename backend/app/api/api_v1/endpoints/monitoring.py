@@ -5,7 +5,7 @@ from typing import Dict, Any, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
-from app.database import get_db
+from app.core.database import get_db
 from app.services.monitoring_service import (
     metrics_collector, 
     performance_analyzer, 

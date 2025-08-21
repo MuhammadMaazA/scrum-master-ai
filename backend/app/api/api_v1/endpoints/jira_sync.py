@@ -5,7 +5,7 @@ from typing import Dict, Any
 from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
 
-from app.database import get_db
+from app.core.database import get_db
 from app.services.jira_service import jira_service
 from app.core.config import settings
 
